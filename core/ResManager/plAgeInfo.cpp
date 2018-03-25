@@ -39,7 +39,7 @@ void plAgeInfo::readFromFile(const ST::string& filename) {
         ST::string ln = S->readLine();
         std::vector<ST::string> parts = ln.split('=', 1);
         ST::string field = parts.at(0).to_lower();
-        ST::string value = parts.at(1);
+		ST::string value = (parts.size() > 1) ? parts.at(1) : "";
 
         if (field == "startdatetime") {
             fStartDateTime = value.to_uint();
