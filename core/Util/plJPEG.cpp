@@ -18,12 +18,6 @@
 #include "Debug/plDebug.h"
 #include <cstring>
 
-// When on a recent macOS version w/ the latest libjepg (v9),
-// the HAVE_BOOLEAN macro won't be defined even if it should.
-#ifdef __APPLE__
-	#define HAVE_BOOLEAN
-#endif
-
 #if defined(HAVE_BOOLEAN)
 # define JPEG_boolean boolean
 #else
