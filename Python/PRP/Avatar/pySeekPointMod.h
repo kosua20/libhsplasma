@@ -14,11 +14,11 @@
  * along with HSPlasma.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _PYGEOMETRYSPAN_H
-#define _PYGEOMETRYSPAN_H
+#ifndef _PYSEEKPOINTMOD_H
+#define _PYSEEKPOINTMOD_H
 
 #include "PyPlasma.h"
 
-PY_WRAP_PLASMA(GeometrySpan, class plGeometrySpan);
+PY_WRAP_PLASMA(SeekPointMod, class plSeekPointMod);
 
 #endif

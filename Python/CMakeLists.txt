@@ -13,6 +13,15 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLAN
     set(CMAKE_C_FLAGS "-fno-strict-aliasing ${CMAKE_C_FLAGS}")
 endif()
 
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8.0)
+        # GCC 8 adds a warning that prevents us from using Python's C API
+        # in the "usual" way -- disable it for now.
+        set(CMAKE_CXX_FLAGS "-Wno-cast-function-type ${CMAKE_CXX_FLAGS}")
+        set(CMAKE_C_FLAGS "-Wno-cast-function-type ${CMAKE_C_FLAGS}")
+    endif()
+endif()
+
 include_directories(${PROJECT_SOURCE_DIR}/core)
 include_directories(${PYTHON_INCLUDE_DIRS})
 include_directories(./)
@@ -164,6 +173,7 @@ set(PRP_AVATAR_SOURCES
     PRP/Avatar/pyScalarControllerChannel.cpp
     PRP/Avatar/pyScalarSDLChannel.cpp
     PRP/Avatar/pyScalarTimeScale.cpp
+    PRP/Avatar/pySeekPointMod.cpp
     PRP/Avatar/pySittingModifier.cpp
     PRP/Avatar/pySoundVolumeApplicator.cpp
     PRP/Avatar/pySpotInnerApplicator.cpp
@@ -178,6 +188,7 @@ set(PRP_AVATAR_HEADERS
     PRP/Avatar/pyATCAnim.h
     PRP/Avatar/pyLadderModifier.h
     PRP/Avatar/pyMultistageBehMod.h
+    PRP/Avatar/pySeekPointMod.h
     PRP/Avatar/pySittingModifier.h
 )
 
